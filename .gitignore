@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.prisma/
+
+# env files
+.env
+.env.*
+!backend/.env.example
+
+# internal docs
+docs/api-reference.md

@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(VIEWER)
+  status    Boolean  @default(true)
+
+  records   Record[]  // relation
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Record {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  userId    String   @db.Uuid
+  addedBy   User     @relation(fields: [userId], references: [id])
+
+  amount    Decimal  @db.Decimal(10, 2)
+  type      Type
+  category  String?
+  notes     String?
+  date      DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+enum Role {
+  VIEWER
+  ANALYST
+  ADMIN
+}
+
+enum Type {
+  INCOME
+  EXPENSE
+}
