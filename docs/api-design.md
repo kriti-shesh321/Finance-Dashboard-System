@@ -340,14 +340,24 @@ Restore deleted record
 
 ---
 
-## GET /dashboard/category
+## GET /dashboard/category-totals
 
 ### Response
 
 ```json
 [
-  { "category": "salary", "total": 10000 },
-  { "category": "food", "total": 2000 }
+  {
+    "category": "salary",
+    "totalIncome": 10000,
+    "totalExpense": 0,
+    "balance": 10000
+  },
+  {
+    "category": "food",
+    "totalIncome": 0,
+    "totalExpense": 2000,
+    "balance": -2000
+  }
 ]
 ```
 
@@ -355,12 +365,16 @@ Restore deleted record
 
 ## GET /dashboard/trends
 
+### Query Params
+
+* period
+
 ### Response
 
 ```json
 [
-  { "month": "2026-03", "income": 5000, "expense": 3000 },
-  { "month": "2026-04", "income": 7000, "expense": 4000 }
+  { "period": "2026-03", "income": 5000, "expense": 3000 },
+  { "period": "2026-04", "income": 7000, "expense": 4000 }
 ]
 ```
 
@@ -376,7 +390,8 @@ Restore deleted record
     "id": "uuid",
     "amount": 500,
     "type": "expense",
-    "category": "food"
+    "category": "food",
+    "date": "2026-04-01T00:00:00Z"
   }
 ]
 ```
