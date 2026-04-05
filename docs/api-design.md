@@ -291,6 +291,7 @@ Get records
 {
   "page": 1,
   "limit": 10,
+  "count": 10,
   "data": [
     {
       "id": "uuid",
