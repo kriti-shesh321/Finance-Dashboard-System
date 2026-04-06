@@ -6,12 +6,20 @@ A backend system for a finance dashboard with role-based access control, financi
 
 ## Overview
 
-This project demonstrates backend engineering fundamentals including: 
+This project focuses on building a structured backend system with: 
 - API design and structuring 
 - Role-based access control (RBAC) 
 - Data modeling with relational databases 
 - Aggregation and analytics endpoints 
 - Validation and error handling
+
+## Live Demo(Hosted on Railway)
+
+Base URL:
+https://finance-dashboard-system-production-2383.up.railway.app/api/v1
+
+Health check:
+https://finance-dashboard-system-production-2383.up.railway.app/health
 
 ---
 
@@ -64,7 +72,10 @@ npx prisma migrate dev
 npx prisma db seed
 ```
 
-Seeds: - 1 Admin (Rei Sora) - 2 Analysts - 3 Viewers
+Seeds: 
+- 1 Admin (Rei Sora) 
+- 2 Analysts 
+- 3 Viewers
 
 ### 6. Start server
 
@@ -76,13 +87,17 @@ npm run dev
 
 ## API Documentation
 
-Detailed API design:
+Live API Documentation:
+[Postman Documentation](https://documenter.getpostman.com/view/17086606/2sBXiqFUma)
 
-    docs/api-design.md
+Base URL: /api/v1
 
-Postman Collection:
+Includes:
+- All endpoints with request/response examples
+- Authentication flow
+- Role-based access usage
 
-    postman_collection.json
+You can directly test all APIs using the provided request/response examples.
 
 ---
 
@@ -168,11 +183,15 @@ Authorization: Bearer <token>
 
 ## Testing
 
-Use Postman collection:
+All APIs can be tested using the Postman documentation:
 
-    finance-dashboard.postman_collection.json
+👉 https://documenter.getpostman.com/view/17086606/2sBXiqFUma
 
-Login → token auto-saved → reuse across APIs
+Steps:
+1. Use `/auth/login` to get a token
+2. Copy token into Authorization header:
+   Bearer <token>
+3. Access protected endpoints
 
 ---
 
