@@ -153,6 +153,8 @@ Get list of users (Admin only)
 * page (number)
 * limit (number)
 * status (active | inactive | all)
+* isDeleted (true | false)
+
 
 ### Response
 
@@ -160,6 +162,7 @@ Get list of users (Admin only)
 {
   "page": 1,
   "limit": 10,
+  "total": 25,
   "data": [
     {
       "id": "uuid",
@@ -203,20 +206,6 @@ Update user details
     "status": true,
     "updatedAt": "2026-04-03T11:00:00Z"
   }
-}
-```
-
----
-
-## PATCH /users/:id/status
-
-Update user status (Admin only)
-
-### Request
-
-```json
-{
-  "status": false
 }
 ```
 

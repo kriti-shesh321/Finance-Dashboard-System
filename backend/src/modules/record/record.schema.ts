@@ -5,7 +5,7 @@ const typeSchema = z
     .string()
     .transform((val) => val.toUpperCase())
     .refine((val) => Object.values(Type).includes(val as Type), {
-        message: "Invalid value for 'type'."
+        message: "Invalid value for 'type'. Must be either 'INCOME' or 'EXPENSE'."
     });
 
 const baseRecordSchema = z.object({

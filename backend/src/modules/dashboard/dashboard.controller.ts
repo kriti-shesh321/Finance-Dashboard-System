@@ -2,6 +2,9 @@ import { Response } from "express";
 import { AuthRequest } from "../../types/auth.types";
 import { prisma } from "../../config/prisma";
 
+// @desc Get dashboard summary (total income, expenses, net balance)
+// @route GET /api/v1/dashboard/summary
+// @access All authenticated users (data filtered by role)
 export const getSummary = async (req: AuthRequest, res: Response) => {
     try {
         const { id: userId, role } = req.user as { id: string; role: string; };
@@ -41,6 +44,9 @@ export const getSummary = async (req: AuthRequest, res: Response) => {
     };
 };
 
+// @desc Get totals by category
+// @route GET /api/v1/dashboard/category-totals
+// @access All authenticated users (data filtered by role)
 export const getCategoryTotals = async (req: AuthRequest, res: Response) => {
     try {
         const { id: userId, role } = req.user as { id: string; role: string; };
@@ -86,6 +92,9 @@ export const getCategoryTotals = async (req: AuthRequest, res: Response) => {
     };
 };
 
+// @desc Get trends over time (income vs expenses)
+// @route GET /api/v1/dashboard/trends?period=weekly|monthly
+// @access All authenticated users (data filtered by role)
 export const getTrends = async (req: AuthRequest, res: Response) => {
     try {
         const { id: userId, role } = req.user as { id: string; role: string; };
@@ -140,6 +149,9 @@ export const getTrends = async (req: AuthRequest, res: Response) => {
     }
 };
 
+// @desc Get recent records (latest 5)
+// @route GET /api/v1/dashboard/recent-records
+// @access All authenticated users (data filtered by role)
 export const recentRecords = async (req: AuthRequest, res: Response) => {
     try {
         const { id: userId, role } = req.user as { id: string; role: string; };

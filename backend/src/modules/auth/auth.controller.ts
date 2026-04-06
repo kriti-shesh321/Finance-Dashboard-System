@@ -8,6 +8,9 @@ import { Role } from "@prisma/client";
 
 const JWT_SECRET = ENV.JWT_SECRET;
 
+// @desc Register a new user
+// @route POST /api/v1/auth/register
+// @access Public
 export const register = async (req: Request, res: Response) => {
     try {
         const { name, email, password } = req.body;
@@ -43,6 +46,9 @@ export const register = async (req: Request, res: Response) => {
     }
 };
 
+// @desc Login user
+// @route POST /api/v1/auth/login
+// @access Public
 export const login = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
@@ -81,6 +87,9 @@ export const login = async (req: Request, res: Response) => {
     }
 };
 
+// @desc Get current user details
+// @route GET /api/v1/auth/me
+// @access any authenticated user
 export const getUser = async (req: AuthRequest, res: Response) => {
     try {
         const userData = req.user as { id: string; role: string; };

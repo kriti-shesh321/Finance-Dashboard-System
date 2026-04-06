@@ -3,6 +3,9 @@ import { prisma } from "../../config/prisma";
 import { AuthRequest } from "../../types/auth.types";
 import { Role, Type } from "@prisma/client";
 
+// @desc Create a new record
+// @route POST /api/v1/records
+// @access ADMIN and ANALYST
 export const createRecord = async (req: AuthRequest, res: Response) => {
     try {
         const userId = req.user?.id as string;
@@ -39,6 +42,9 @@ export const createRecord = async (req: AuthRequest, res: Response) => {
     }
 };
 
+// @desc Get list of records with filters and pagination
+// @route GET /api/v1/records
+// @access ADMIN can see all records, ANALYST, VIEWER can see their own records
 export const getRecords = async (req: AuthRequest, res: Response) => {
     try {
         const { id, role } = req.user as { id: string; role: string; };
@@ -95,6 +101,9 @@ export const getRecords = async (req: AuthRequest, res: Response) => {
     }
 };
 
+// @desc Edit a record
+// @route PUT /api/v1/records/:id
+// @access ADMIN can edit any record, ANALYST can edit their own records
 export const editRecord = async (req: AuthRequest, res: Response) => {
     try {
         const recordId = req.params.id as string;
@@ -143,6 +152,9 @@ export const editRecord = async (req: AuthRequest, res: Response) => {
     }
 };
 
+// @desc Soft delete a record
+// @route DELETE /api/v1/records/:id
+// @access ADMIN can delete any record, ANALYST can delete their own records
 export const deleteRecord = async (req: AuthRequest, res: Response) => {
     try {
         const recordId = req.params.id as string;
@@ -181,6 +193,9 @@ export const deleteRecord = async (req: AuthRequest, res: Response) => {
     }
 };
 
+// @desc Restore a soft-deleted record
+// @route POST /api/v1/records/:id/restore
+// @access ADMIN can restore any record, ANALYST can restore their own records
 export const restoreRecord = async (req: AuthRequest, res: Response) => {
     try {
         const recordId = req.params.id as string;
