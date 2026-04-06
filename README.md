@@ -115,11 +115,9 @@ Authorization: Bearer <token>
 
 ## Roles & Permissions
 
-  Role      Access
-  --------- -------------------------------
-  Viewer    Read-only access
-  Analyst   Read + Create/Update records
-  Admin     Full access (users + records)
+- Viewer: Read-only access
+- Analyst: Read + Create/Update records
+- Admin: Full access (users + records)
 
 ---
 
