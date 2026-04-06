@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "23c82263-63c6-46ba-a138-49a9aaef6b18",
-		"name": "finance-dashboard",
+		"name": "Finance Dashboard API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17086606"
 	},
@@ -36,7 +36,16 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "User registered successfully",
+						"user": {
+							"id": "bcb31709-04fc-4b9a-a8a0-dedd75f2ef77",
+							"name": "Salad Jjigae",
+							"email": "salad@gmail.com",
+							"role": "VIEWER",
+							"createdAt": "2026-04-06T11:39:31.244Z"
+						}
+					}
 				},
 				{
 					"name": "Login",
@@ -80,7 +89,15 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhMWQ5ZThmLWIyZWEtNDFlNi1hMzJiLWUwMDk0YzliNWE2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTQ3NTYyMCwiZXhwIjoxNzc2MDgwNDIwfQ.hSH77B_YLw5HjV0pUoDwnMHS5NS6io9AZ7STKzop_2E",
+						"user": {
+							"id": "7a1d9e8f-b2ea-41e6-a32b-e0094c9b5a60",
+							"name": "Rei Sora",
+							"email": "rei@gmail.com",
+							"role": "ADMIN"
+						}
+					}
 				},
 				{
 					"name": "Get Current User",
@@ -113,7 +130,15 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"user": {
+							"id": "7a1d9e8f-b2ea-41e6-a32b-e0094c9b5a60",
+							"name": "Rei Sora",
+							"email": "rei@gmail.com",
+							"role": "ADMIN",
+							"createdAt": "2026-04-02T21:34:34.360Z"
+						}
+					}
 				}
 			]
 		},
@@ -146,7 +171,18 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "User created successfully",
+						"user": {
+							"id": "c1adb54e-7ea7-40e0-9cb5-edc21a959eb2",
+							"name": "Jim Pear",
+							"email": "jim@gmail.com",
+							"role": "ANALYST",
+							"status": true,
+							"createdAt": "2026-04-06T11:41:46.443Z",
+							"updatedAt": "2026-04-06T11:41:46.443Z"
+						}
+					}
 				},
 				{
 					"name": "Get Users",
@@ -183,7 +219,114 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Users fetched successfully",
+						"page": 1,
+						"limit": 10,
+						"total": 14,
+						"data": [
+							{
+								"id": "c1adb54e-7ea7-40e0-9cb5-edc21a959eb2",
+								"name": "Jim Pear",
+								"email": "jim@gmail.com",
+								"role": "ANALYST",
+								"status": true,
+								"createdAt": "2026-04-06T11:41:46.443Z",
+								"updatedAt": "2026-04-06T11:41:46.443Z",
+								"deletedAt": null
+							},
+							{
+								"id": "bcb31709-04fc-4b9a-a8a0-dedd75f2ef77",
+								"name": "Salad Jjigae",
+								"email": "salad@gmail.com",
+								"role": "VIEWER",
+								"status": true,
+								"createdAt": "2026-04-06T11:39:31.244Z",
+								"updatedAt": "2026-04-06T11:39:31.244Z",
+								"deletedAt": null
+							},
+							{
+								"id": "ab65fa8b-cfb8-4d29-b7d2-a52671918465",
+								"name": "Asha Bhosle",
+								"email": "asha@gmail.com",
+								"role": "VIEWER",
+								"status": true,
+								"createdAt": "2026-04-06T10:27:42.511Z",
+								"updatedAt": "2026-04-06T10:43:36.635Z",
+								"deletedAt": "2026-04-06T10:43:36.634Z"
+							},
+							{
+								"id": "949f1aee-bc0a-4249-8790-6e52453bc97a",
+								"name": "Kimchi Jjigae",
+								"email": "kimchi@gmail.com",
+								"role": "VIEWER",
+								"status": true,
+								"createdAt": "2026-04-06T10:25:39.910Z",
+								"updatedAt": "2026-04-06T10:25:39.910Z",
+								"deletedAt": null
+							},
+							{
+								"id": "8e8e47c6-7f26-4051-8b74-6217ece060f3",
+								"name": "2 new user",
+								"email": "2new@gmail.com",
+								"role": "ANALYST",
+								"status": true,
+								"createdAt": "2026-04-06T06:50:08.140Z",
+								"updatedAt": "2026-04-06T06:50:08.140Z",
+								"deletedAt": null
+							},
+							{
+								"id": "375fe4db-7fc7-4900-9b89-bb0d9a7d9e83",
+								"name": "new user",
+								"email": "new@gmail.com",
+								"role": "VIEWER",
+								"status": true,
+								"createdAt": "2026-04-06T06:04:18.969Z",
+								"updatedAt": "2026-04-06T06:04:18.969Z",
+								"deletedAt": null
+							},
+							{
+								"id": "2beca117-4394-4924-995a-40504dbe3bb3",
+								"name": "Test2 user",
+								"email": "33new@gmail.com",
+								"role": "ANALYST",
+								"status": true,
+								"createdAt": "2026-04-03T20:08:14.343Z",
+								"updatedAt": "2026-04-06T08:21:14.665Z",
+								"deletedAt": "2026-04-06T08:21:14.664Z"
+							},
+							{
+								"id": "f6eccab5-267f-4e33-9443-c43a3a3d7506",
+								"name": "Test user",
+								"email": "test@gmail.com",
+								"role": "VIEWER",
+								"status": true,
+								"createdAt": "2026-04-03T19:15:13.914Z",
+								"updatedAt": "2026-04-03T19:15:13.914Z",
+								"deletedAt": null
+							},
+							{
+								"id": "3cf5bc31-1762-47d9-a603-94ca89b19e94",
+								"name": "Tim Smitch",
+								"email": "tim@gmail.com",
+								"role": "ANALYST",
+								"status": true,
+								"createdAt": "2026-04-02T21:36:30.571Z",
+								"updatedAt": "2026-04-02T21:36:30.571Z",
+								"deletedAt": null
+							},
+							{
+								"id": "fca79afe-484f-4928-80a1-0674783e8028",
+								"name": "Kei Izumi",
+								"email": "kei@gmail.com",
+								"role": "ANALYST",
+								"status": true,
+								"createdAt": "2026-04-02T21:36:28.805Z",
+								"updatedAt": "2026-04-02T21:36:28.805Z",
+								"deletedAt": null
+							}
+						]
+					}
 				},
 				{
 					"name": "Update User",
@@ -200,7 +343,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{local8000}}/api/v1/users/ab65fa8b-cfb8-4d29-b7d2-a52671918465",
+							"raw": "{{local8000}}/api/v1/users/c1adb54e-7ea7-40e0-9cb5-edc21a959eb2",
 							"host": [
 								"{{local8000}}"
 							],
@@ -208,11 +351,22 @@
 								"api",
 								"v1",
 								"users",
-								"ab65fa8b-cfb8-4d29-b7d2-a52671918465"
+								"c1adb54e-7ea7-40e0-9cb5-edc21a959eb2"
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "User updated successfully.",
+						"user": {
+							"id": "c1adb54e-7ea7-40e0-9cb5-edc21a959eb2",
+							"name": "Jim Pear",
+							"email": "jim@gmail.com",
+							"role": "VIEWER",
+							"status": true,
+							"createdAt": "2026-04-06T11:41:46.443Z",
+							"updatedAt": "2026-04-06T11:43:28.778Z"
+						}
+					}
 				},
 				{
 					"name": "Delete User",
@@ -224,7 +378,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{local8000}}/api/v1/users/ab65fa8b-cfb8-4d29-b7d2-a52671918465",
+							"raw": "{{local8000}}/api/v1/users/c1adb54e-7ea7-40e0-9cb5-edc21a959eb2",
 							"host": [
 								"{{local8000}}"
 							],
@@ -232,11 +386,13 @@
 								"api",
 								"v1",
 								"users",
-								"ab65fa8b-cfb8-4d29-b7d2-a52671918465"
+								"c1adb54e-7ea7-40e0-9cb5-edc21a959eb2"
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "User deleted successfully."
+					}
 				}
 			]
 		},
@@ -269,7 +425,20 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Record created successfully",
+						"record": {
+							"id": "fae52ef3-eb1b-4570-8fd5-1450a9d36fec",
+							"userId": "7a1d9e8f-b2ea-41e6-a32b-e0094c9b5a60",
+							"amount": "5000",
+							"type": "INCOME",
+							"category": "investment returns",
+							"notes": "5 year maturity returns.",
+							"date": "2026-04-30T00:12:00.000Z",
+							"createdAt": "2026-04-06T11:44:59.542Z",
+							"updatedAt": "2026-04-06T11:44:59.542Z"
+						}
+					}
 				},
 				{
 					"name": "Get Records",
@@ -321,7 +490,24 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Records fetched successfully.",
+						"page": 1,
+						"limit": 10,
+						"total": 1,
+						"data": [
+							{
+								"id": "001e94de-2ed8-488f-852a-471f275b9561",
+								"userId": "7a1d9e8f-b2ea-41e6-a32b-e0094c9b5a60",
+								"amount": "60000",
+								"type": "EXPENSE",
+								"category": "long term purchase",
+								"date": "2026-05-01T00:12:00.000Z",
+								"createdAt": "2026-04-05T21:36:31.515Z",
+								"updatedAt": "2026-04-05T21:36:31.515Z"
+							}
+						]
+					}
 				},
 				{
 					"name": "Update Record",
@@ -350,7 +536,20 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Record updated successfully",
+						"record": {
+							"id": "e16d10fd-5979-407e-9bec-1004c0f8174b",
+							"userId": "7a1d9e8f-b2ea-41e6-a32b-e0094c9b5a60",
+							"amount": "3000",
+							"type": "INCOME",
+							"category": "investment returns",
+							"notes": "5 year maturity returns.",
+							"date": "2026-04-30T00:12:00.000Z",
+							"createdAt": "2026-04-06T10:45:29.881Z",
+							"updatedAt": "2026-04-06T11:46:27.692Z"
+						}
+					}
 				},
 				{
 					"name": "Delete Record",
@@ -374,7 +573,9 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Record deleted successfully."
+					}
 				},
 				{
 					"name": "Restore Record",
@@ -395,7 +596,9 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"message": "Record restored successfully."
+					}
 				}
 			]
 		},
@@ -420,7 +623,36 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "001e94de-2ed8-488f-852a-471f275b9561",
+							"amount": "60000",
+							"type": "EXPENSE",
+							"category": "long term purchase",
+							"date": "2026-05-01T00:12:00.000Z"
+						},
+						{
+							"id": "fae52ef3-eb1b-4570-8fd5-1450a9d36fec",
+							"amount": "5000",
+							"type": "INCOME",
+							"category": "investment returns",
+							"date": "2026-04-30T00:12:00.000Z"
+						},
+						{
+							"id": "e16d10fd-5979-407e-9bec-1004c0f8174b",
+							"amount": "3000",
+							"type": "INCOME",
+							"category": "investment returns",
+							"date": "2026-04-30T00:12:00.000Z"
+						},
+						{
+							"id": "3acedaa9-f6e6-411c-8de2-e0eaa24bc91e",
+							"amount": "3000",
+							"type": "INCOME",
+							"category": "salary",
+							"date": "2026-04-01T00:00:00.000Z"
+						}
+					]
 				},
 				{
 					"name": "Category Totals",
@@ -440,7 +672,26 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"category": "investment returns",
+							"totalIncome": 8000,
+							"totalExpense": 0,
+							"balance": 8000
+						},
+						{
+							"category": "long term purchase",
+							"totalIncome": 0,
+							"totalExpense": 60000,
+							"balance": -60000
+						},
+						{
+							"category": "salary",
+							"totalIncome": 3000,
+							"totalExpense": 0,
+							"balance": 3000
+						}
+					]
 				},
 				{
 					"name": "Trends",
@@ -466,7 +717,18 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"period": "2026-04",
+							"income": 11000,
+							"expense": 0
+						},
+						{
+							"period": "2026-05",
+							"income": 0,
+							"expense": 60000
+						}
+					]
 				},
 				{
 					"name": "Summary",
@@ -486,7 +748,11 @@
 							]
 						}
 					},
-					"response": []
+					"response": {
+						"totalIncome": 11000,
+						"totalExpenses": 60000,
+						"netBalance": -49000
+					}
 				}
 			]
 		}
@@ -528,11 +794,11 @@
 	"variable": [
 		{
 			"key": "local8000",
-			"value": ""
+			"value": "http://localhost:8000"
 		},
 		{
 			"key": "authToken",
-			"value": ""
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhMWQ5ZThmLWIyZWEtNDFlNi1hMzJiLWUwMDk0YzliNWE2MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTQ3NTYyMCwiZXhwIjoxNzc2MDgwNDIwfQ.hSH77B_YLw5HjV0pUoDwnMHS5NS6io9AZ7STKzop_2E"
 		}
 	]
 }

@@ -354,7 +354,7 @@ Restore deleted record
 ```json
 {
   "totalIncome": 10000,
-  "totalExpense": 4000,
+  "totalExpenses": 4000,
   "netBalance": 6000
 }
 ```
