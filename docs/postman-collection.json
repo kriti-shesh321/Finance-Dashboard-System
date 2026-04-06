@@ -1,0 +1,538 @@
+{
+	"info": {
+		"_postman_id": "23c82263-63c6-46ba-a138-49a9aaef6b18",
+		"name": "finance-dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17086606"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kimchi Jjigae\",\n    \"email\": \"kimchi@gmail.com\",\n    \"password\": \"qwertyuiop00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/auth/register",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"console.log(\"token: \", response.token)",
+									"pm.collectionVariables.set(\"authToken\", response.token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"rei@gmail.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/auth/login",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/auth/me",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Asha Bhosle\",\n    \"email\": \"asha@gmail.com\",\n    \"password\": \"password\",\n    \"role\": \"analyst\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/users",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/users?page=1&limit=10&status=active&includeDeleted=true",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								},
+								{
+									"key": "includeDeleted",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"viewer\",\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/users/ab65fa8b-cfb8-4d29-b7d2-a52671918465",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"ab65fa8b-cfb8-4d29-b7d2-a52671918465"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/users/ab65fa8b-cfb8-4d29-b7d2-a52671918465",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"ab65fa8b-cfb8-4d29-b7d2-a52671918465"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "record",
+			"item": [
+				{
+					"name": "Create Record",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 5000,\n  \"type\": \"income\",\n  \"category\": \"investment returns\",\n  \"notes\": \"5 year maturity returns.\",\n  \"date\": \"2026-04-30T00:12:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/records",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Records",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/records?page=1&limit=10&type=expense&category=&startDate=&endDate=",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"records"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "type",
+									"value": "expense"
+								},
+								{
+									"key": "category",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 7000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/records/e16d10fd-5979-407e-9bec-1004c0f8174b",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"records",
+								"e16d10fd-5979-407e-9bec-1004c0f8174b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local8000}}/api/v1/records/e16d10fd-5979-407e-9bec-1004c0f8174b",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"records",
+								"e16d10fd-5979-407e-9bec-1004c0f8174b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Record",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/records/e16d10fd-5979-407e-9bec-1004c0f8174b/restore",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"records",
+								"e16d10fd-5979-407e-9bec-1004c0f8174b",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "Recent Records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/dashboard/recent",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Totals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/dashboard/category-totals",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"category-totals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/dashboard/trends?period=monthly",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"trends"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "monthly"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local8000}}/api/v1/dashboard/summary",
+							"host": [
+								"{{local8000}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local8000",
+			"value": ""
+		},
+		{
+			"key": "authToken",
+			"value": ""
+		}
+	]
+}

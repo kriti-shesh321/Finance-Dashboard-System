@@ -153,7 +153,7 @@ Get list of users (Admin only)
 * page (number)
 * limit (number)
 * status (active | inactive | all)
-* isDeleted (true | false)
+* includeDeleted (true | false)
 
 
 ### Response
@@ -170,7 +170,8 @@ Get list of users (Admin only)
       "email": "user@example.com",
       "role": "viewer",
       "status": true,
-      "createdAt": "2026-04-03T10:00:00Z"
+      "createdAt": "2026-04-03T10:00:00Z",
+      "deletedAt": "datetime | null"
     }
   ]
 }
@@ -299,17 +300,47 @@ Get records
 
 Update record
 
+### Response
+
+```json
+{
+  "message": "Record updated successfully",
+  "record": {
+    "id": "uuid",
+    "amount": 7000,
+    "type": "income",
+    "category": "investment returns",
+    "notes": "updated note",
+    "date": "2026-04-30T00:12:00Z",
+    "updatedAt": "2026-04-03T11:00:00Z"
+  }
+}
+```
+
 ---
 
 ## DELETE /records/:id
 
 Soft delete record
 
+### Response
+
+```json
+{
+  "message": "Record deleted successfully"
+}
+
 ---
 
 ## PATCH /records/:id/restore
 
 Restore deleted record
+
+```json
+{
+  "message": "Record restored successfully"
+}
+```
 
 ---
 

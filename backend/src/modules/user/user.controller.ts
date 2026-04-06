@@ -75,7 +75,7 @@ export const getUsers = async (req: AuthRequest, res: Response) => {
                 orderBy: { createdAt: "desc" },
                 omit: {
                     password: true,
-                    deletedAt: true
+                    ...(includeDeleted ? {} : { deletedAt: true })
                 }
             }),
             prisma.user.count({ where })
