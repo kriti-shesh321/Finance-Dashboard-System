@@ -63,36 +63,39 @@ export const getRecords = async (req: AuthRequest, res: Response) => {
         const limitNum = limit ? parseInt(limit, 10) : 10;
         const skip = (pageNum - 1) * limitNum;
 
+        // filters
+        const where = {
+            deletedAt: null,
+            ...(isAdmin ? {} : { userId: id }),
+            type: type ? (type.toUpperCase() as Type) : undefined,
+            category: category || undefined,
+            date: {
+                gte: startDate ? new Date(startDate) : undefined,
+                lte: endDate ? new Date(endDate) : undefined
+            }
+        };
 
-        const records = await prisma.record.findMany({
-            where: {
-                deletedAt: null,
-
-                ...(isAdmin ? {} : { userId: id }),
-
-                type: type ? type.toUpperCase() as Type : undefined,
-                category: category || undefined,
-                date: {
-                    gte: startDate ? new Date(startDate) : undefined,
-                    lte: endDate ? new Date(endDate) : undefined
-                }
-            },
-            omit: {
-                notes: true,
-                deletedAt: true
-            },
-            orderBy: {
-                date: 'desc'
-            },
-            skip,
-            take: limitNum
-        });
+        const [records, total] = await Promise.all([
+            prisma.record.findMany({
+                where,
+                omit: {
+                    notes: true,
+                    deletedAt: true
+                },
+                orderBy: {
+                    date: "desc"
+                },
+                skip,
+                take: limitNum
+            }),
+            prisma.record.count({ where })
+        ]);
 
         return res.status(200).json({
             message: "Records fetched successfully.",
             page: pageNum,
             limit: limitNum,
-            count: records.length,
+            total,
             data: records
         });
     } catch (error) {
@@ -102,7 +105,7 @@ export const getRecords = async (req: AuthRequest, res: Response) => {
 };
 
 // @desc Edit a record
-// @route PUT /api/v1/records/:id
+// @route PATCH /api/v1/records/:id
 // @access ADMIN can edit any record, ANALYST can edit their own records
 export const editRecord = async (req: AuthRequest, res: Response) => {
     try {
@@ -194,7 +197,7 @@ export const deleteRecord = async (req: AuthRequest, res: Response) => {
 };
 
 // @desc Restore a soft-deleted record
-// @route POST /api/v1/records/:id/restore
+// @route PATCH /api/v1/records/:id/restore
 // @access ADMIN can restore any record, ANALYST can restore their own records
 export const restoreRecord = async (req: AuthRequest, res: Response) => {
     try {

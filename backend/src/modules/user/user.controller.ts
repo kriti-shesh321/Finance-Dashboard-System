@@ -11,6 +11,11 @@ export const createUser = async (req: AuthRequest, res: Response) => {
     try {
         const { name, email, password, role, status } = req.body;
 
+        const existingUser = await prisma.user.findUnique({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await prisma.user.create({
             data: {
@@ -95,7 +100,7 @@ export const getUsers = async (req: AuthRequest, res: Response) => {
 };
 
 // @desc Edit user details
-// @route PUT /api/v1/users/:id
+// @route PATCH /api/v1/users/:id
 // @access Admin can edit any user, users can edit their own profile
 export const editUser = async (req: AuthRequest, res: Response) => {
     try {
@@ -113,7 +118,7 @@ export const editUser = async (req: AuthRequest, res: Response) => {
             return res.status(404).json({ message: "User not found" });
         }
 
-        const updateUser = await prisma.user.update({
+        const updatedUser = await prisma.user.update({
             where: {
                 id: (currentUserRole === Role.ADMIN ? targetUserId : currentUserId)
             },
@@ -132,7 +137,7 @@ export const editUser = async (req: AuthRequest, res: Response) => {
 
         return res.status(200).json({
             message: "User updated successfully.",
-            user: updateUser
+            user: updatedUser
         });
     } catch (error) {
         console.error("Error editing user:", error);

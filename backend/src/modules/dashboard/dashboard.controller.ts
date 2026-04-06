@@ -150,7 +150,7 @@ export const getTrends = async (req: AuthRequest, res: Response) => {
 };
 
 // @desc Get recent records (latest 5)
-// @route GET /api/v1/dashboard/recent-records
+// @route GET /api/v1/dashboard/recent
 // @access All authenticated users (data filtered by role)
 export const recentRecords = async (req: AuthRequest, res: Response) => {
     try {

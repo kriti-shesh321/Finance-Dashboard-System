@@ -281,7 +281,7 @@ Get records
 {
   "page": 1,
   "limit": 10,
-  "count": 10,
+  "total": 10,
   "data": [
     {
       "id": "uuid",
@@ -329,6 +329,7 @@ Soft delete record
 {
   "message": "Record deleted successfully"
 }
+```
 
 ---
 
